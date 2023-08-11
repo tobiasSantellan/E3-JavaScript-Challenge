@@ -84,22 +84,28 @@ const renderPizzaList = () => {
 };
 
 
+
 // Funcion que verifica si el input esta vacio
-const isEmpty = () => {
-  return !input.value.trim().length; 
+const isEmpty = (inputNumber) => {
+  return !inputNumber.value.trim().length; 
 };
 
 // Funcion que verifica que se ingresa un numero
-const numberValid = (input) => {
+const numberValid = (inputNumber) => {
   const re = /^[0-9]{10}$/;
   //testeamos
-  return re.test(input.value.trim());
+  return re.test(inputNumber.value.trim());
 };
 
 // Funcion que muestra cada ID del array pizza
 const idCorrecto = pizzas.filter(pizza => {
   return pizza.id;
 })
+
+idCorrecto.forEach(pizza => {
+  return pizza.renderPizzaList()
+})
+
 
 
 /**
@@ -110,7 +116,7 @@ const showError = (message) => {
 };
 
  const isValid = () => {
-  let valid = false 
+  let valid = false;
    if(isEmpty(inputNumber)) {
      showError("El campo está vacío, ponga un numero")
      return;
@@ -128,15 +134,13 @@ const showError = (message) => {
 
 const submitEvent = (e) => {
   e.preventDefault();
-  if(isValid()) {
-    let value = inputNumber.value;
-    if(value === idCorrecto) {
-      renderPizzaList
-    } 
-    saveLocalStorage()
-
-  }
-
+  if(isValid(inputNumber)) {
+     let value = inputNumber.value;
+     if(value === idCorrecto) {
+       renderPizzaList
+     } 
+     saveLocalStorage()
+ }
 }
 
 
