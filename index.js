@@ -83,9 +83,9 @@ const renderPizzaList = () => {
 
 
 // Funcion que muestra cada ID del array pizza
- const idCorrecto = pizzas.filter(pizza => {
-  return pizza.id;
-})
+//  const idCorrecto = pizzas.filter(pizza => {
+//   return pizza.id;
+// })
 
 
 const idPizza = pizzas.map((pizza) => pizza.id);
