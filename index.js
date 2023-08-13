@@ -87,17 +87,15 @@ const renderPizzaList = () => {
 //   return pizza.id;
 // })
 
-
-const idPizza = pizzas.map((pizza) => pizza.id);
-console.log(idPizza);
-
 const submitEvent = (e) => {
   e.preventDefault();
-   if(inputNumber){
-    errorMessage.textContent = `Ingresaste un numero`;
+  const idPizza = pizzas.map((pizza) => pizza.id === inputNumber);
+  console.log(idPizza);
+   if(idPizza){
+    renderPizzaList()
+   } else {
+    errorMessage.textContent = `No ingresaste un numero valido`;
    }
-
-  
 }
 
 
