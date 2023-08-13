@@ -42,6 +42,7 @@ h1 {
 
 .container-secundario {
     display: flex;
+    justify-content: end;
 }
 
 .input-number {
@@ -80,9 +81,7 @@ h1 {
     color: #fff;
 }
 
-.input-number.error {
-    border: 1px solid #dc3545;
-  }
+
 
 .form-error {
     color: #dc3545;
@@ -90,6 +89,7 @@ h1 {
     margin: 8px 0px;
     max-width: 350px;
     text-align: center;
+    align-self: flex-start;
   }
 
 .container-generador {

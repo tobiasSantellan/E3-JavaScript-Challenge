@@ -53,10 +53,7 @@ const form = d.querySelector(".form");
 const errorMessage = d.querySelector(".form-error");
 const containerGenerador = d.querySelector(".container-generador");
 
-// btnSubmit.addEventListener("submit", e => {
-//   e.preventDefault();
-//   saveLocalStorage()
-// })
+console.log(inputNumber)
 
 
 const pizzasID = JSON.parse(localStorage.getItem('pizza')) || [];
@@ -72,7 +69,7 @@ const createCardTemplate = pizza => {
   return `
   <img src='${pizza.imagen}' class='img'>
   <p class='parrafo'>${pizza.nombre}</p>
-  <p class='parrafo'>${pizza.precio}</p>
+  <p class='parrafo'>$${pizza.precio}</p>
   `
 }
 
@@ -85,72 +82,28 @@ const renderPizzaList = () => {
 
 
 
-// Funcion que verifica si el input esta vacio
-const isEmpty = (inputNumber) => {
-  return !inputNumber.value.trim().length; 
-};
-
-// Funcion que verifica que se ingresa un numero
-const numberValid = (inputNumber) => {
-  const re = /^[0-9]{10}$/;
-  //testeamos
-  return re.test(inputNumber.value.trim());
-};
-
 // Funcion que muestra cada ID del array pizza
-const idCorrecto = pizzas.filter(pizza => {
+ const idCorrecto = pizzas.filter(pizza => {
   return pizza.id;
 })
 
-idCorrecto.forEach(pizza => {
-  return pizza.renderPizzaList()
-})
 
-
-
-/**
- * Función para mostrar error al validar un input.
- */
-const showError = (message) => {
-  errorMessage.textContent = message;
-};
-
- const isValid = () => {
-  let valid = false;
-   if(isEmpty(inputNumber)) {
-     showError("El campo está vacío, ponga un numero")
-     return;
-   }
-   if(!numberValid(inputNumber)) {
-     showError("El campo solo acepta numeros")
-     return;
-   }
-   valid = true;
-   errorMessage.textContent = "";
-   return valid;
- }
-
-// // console.log(idCorrecto)
+const idPizza = pizzas.map((pizza) => pizza.id);
+console.log(idPizza);
 
 const submitEvent = (e) => {
   e.preventDefault();
-  if(isValid(inputNumber)) {
-     let value = inputNumber.value;
-     if(value === idCorrecto) {
-       renderPizzaList
-     } 
-     saveLocalStorage()
- }
+   if(inputNumber){
+    errorMessage.textContent = `Ingresaste un numero`;
+   }
+
+  
 }
 
 
-
-
-// input.addEventListener("input", () => {
- 
-// })
+ form.addEventListener("submit", submitEvent)
  
 const init = () => {
   d.addEventListener('DOMContentLoaded', renderPizzaList);
-   form.addEventListener("submit", submitEvent)
+  
 }
