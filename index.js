@@ -48,13 +48,10 @@ const pizzas = [
 
 const d = document;
 
-const inputNumber = d.querySelector(".input-number");
+const inputNumber = d.getElementById("input");
 const form = d.querySelector(".form");
 const errorMessage = d.querySelector(".form-error");
 const containerGenerador = d.querySelector(".container-generador");
-
-console.log(inputNumber)
-
 
 const pizzasID = JSON.parse(localStorage.getItem('pizza')) || [];
 
@@ -65,43 +62,37 @@ const saveLocalStorage = () => {
 saveLocalStorage()
 
 // Funcion generadora
-const createCardTemplate = pizza => {
-  return `
-  <img src='${pizza.imagen}' class='img'>
-  <p class='parrafo'>${pizza.nombre}</p>
-  <p class='parrafo'>$${pizza.precio}</p>
-  `
-}
+// const createCardTemplate = pizza => {
+//   return `
+//   <img src='${pizza.imagen}' class='img'>
+//   <p class='parrafo'>${pizza.nombre}</p>
+//   <p class='parrafo'>$${pizza.precio}</p>
+//   `
+// }
 
-console.log(createCardTemplate)
+// const renderPizzaList = () => {
+//   containerGenerador.innerHTML = pizzasID.map((pizzas) => createCardTemplate(pizzas)).join("")
+// };
 
-
-const renderPizzaList = () => {
-  containerGenerador.innerHTML = pizzasID.map((pizzas) => createCardTemplate(pizzas)).join("")
-};
-
-
-
-// Funcion que muestra cada ID del array pizza
-//  const idCorrecto = pizzas.filter(pizza => {
-//   return pizza.id;
-// })
 
 const submitEvent = (e) => {
   e.preventDefault();
-  const idPizza = pizzas.map((pizza) => pizza.id === inputNumber);
-  console.log(idPizza);
-   if(idPizza){
-    renderPizzaList()
-   } else {
-    errorMessage.textContent = `No ingresaste un numero valido`;
-   }
+  // Funcion que muestra cada ID del array pizza
+ const idCorrecto = pizzas.filter(pizza => {
+  return pizza.id;
+})
+console.log(idCorrecto)
+if (inputNumber === idCorrecto) {
+  containerGenerador.innerHTML = `  <img src='${pizzas.imagen}' class='img'>
+<p class='parrafo'>${pizzas.nombre}</p>
+<p class='parrafo'>$${pizzas.precio}</p>` 
+} else {
+  errorMessage.textContent = `No ingresaste un numero valido`
+} 
 }
-
-
- form.addEventListener("submit", submitEvent)
- 
+console.log(inputNumber)
 const init = () => {
-  d.addEventListener('DOMContentLoaded', renderPizzaList);
-  
+  form.addEventListener("submit", submitEvent)
 }
+
+init();
