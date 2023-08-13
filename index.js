@@ -59,38 +59,24 @@ const saveLocalStorage = () => {
   localStorage.setItem("pizza", JSON.stringify(pizzas)); 
 };
 
-saveLocalStorage()
-
-// Funcion generadora
-// const createCardTemplate = pizza => {
-//   return `
-//   <img src='${pizza.imagen}' class='img'>
-//   <p class='parrafo'>${pizza.nombre}</p>
-//   <p class='parrafo'>$${pizza.precio}</p>
-//   `
-// }
-
-// const renderPizzaList = () => {
-//   containerGenerador.innerHTML = pizzasID.map((pizzas) => createCardTemplate(pizzas)).join("")
-// };
-
 
 const submitEvent = (e) => {
   e.preventDefault();
   // Funcion que muestra cada ID del array pizza
- const idCorrecto = pizzas.filter(pizza => {
-  return pizza.id;
+ const idCorrecto = pizzas.find(pizza => {
+  return pizza.id === parseInt(inputNumber.value);
 })
 console.log(idCorrecto)
-if (inputNumber === idCorrecto) {
-  containerGenerador.innerHTML = `  <img src='${pizzas.imagen}' class='img'>
-<p class='parrafo'>${pizzas.nombre}</p>
-<p class='parrafo'>$${pizzas.precio}</p>` 
+
+if (idCorrecto) {
+  containerGenerador.innerHTML = `  <img src='${idCorrecto.imagen}' class='img'>
+<p class='parrafo'>${idCorrecto.nombre}</p>
+ <p class='parrafo'>$${idCorrecto.precio}</p>` 
 } else {
   errorMessage.textContent = `No ingresaste un numero valido`
 } 
+
 }
-console.log(inputNumber)
 const init = () => {
   form.addEventListener("submit", submitEvent)
 }
