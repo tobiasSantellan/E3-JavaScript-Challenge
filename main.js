@@ -73,8 +73,10 @@ if (idCorrecto) {
 <p class='parrafo'>${idCorrecto.nombre}</p>
  <p class='parrafo'>$${idCorrecto.precio}</p>
  <p class='parrafo'>${idCorrecto.ingredientes.join(', ')}</p>` 
+ errorMessage.textContent = ''
 } else {
   errorMessage.textContent = `No ingresaste un numero valido`
+  containerGenerador.innerHTML = ''
 }
 form.reset();
 }
