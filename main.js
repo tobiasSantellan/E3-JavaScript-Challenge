@@ -71,12 +71,15 @@ console.log(idCorrecto)
 if (idCorrecto) {
   containerGenerador.innerHTML = `  <img src='${idCorrecto.imagen}' class='img'>
 <p class='parrafo'>${idCorrecto.nombre}</p>
- <p class='parrafo'>$${idCorrecto.precio}</p>` 
+ <p class='parrafo'>$${idCorrecto.precio}</p>
+ <p class='parrafo'>${idCorrecto.ingredientes.join(', ')}</p>` 
 } else {
   errorMessage.textContent = `No ingresaste un numero valido`
-} 
-
 }
+form.reset();
+}
+
+
 const init = () => {
   form.addEventListener("submit", submitEvent)
 }
