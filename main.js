@@ -63,6 +63,17 @@ const containerGenerador = d.querySelector(".container-generador");
  
 // }
 // getPizzaLocalStorage(); 
+const getPizzaLocalStorage = (idCorrecto) => {
+	console.log(idCorrecto);
+	const pizzaLocalStorage = JSON.parse(localStorage.getItem("pizza_correcta"))
+	console.log(pizzaLocalStorage);
+	/*containerGenerador.innerHTML = `  <img src='${pizzaLocalStorage.imagen}' class='img'>
+ <p class='parrafo'>${pizzaLocalStorage.nombre}</p>
+ <p class='parrafo'>$${pizzaLocalStorage.precio}</p>
+ <p class='parrafo'>${pizzaLocalStorage.ingredientes.join(', ')}</p>`
+ */
+}
+getPizzaLocalStorage();
 
 const saveLocalStorage = (idCorrecto) => {
   localStorage.setItem("pizza_correcta", JSON.stringify(idCorrecto)); 
