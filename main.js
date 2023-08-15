@@ -53,13 +53,6 @@ const form = d.querySelector(".form");
 const errorMessage = d.querySelector(".form-error");
 const containerGenerador = d.querySelector(".container-generador");
 
-const getPizzaLocalStorage = (idCorrecto) => {
-	console.log(idCorrecto);
-	const pizzaLocalStorage = JSON.parse(localStorage.getItem("pizza_correcta"))
-	console.log(pizzaLocalStorage);
-}
-getPizzaLocalStorage();
-
 const saveLocalStorage = (idCorrecto) => {
   localStorage.setItem("pizza_correcta", JSON.stringify(idCorrecto)); 
 };
