@@ -53,12 +53,23 @@ const form = d.querySelector(".form");
 const errorMessage = d.querySelector(".form-error");
 const containerGenerador = d.querySelector(".container-generador");
 
+// const getPizzaLocalStorage = () => {
+// 	const pizzaLocalStorage = localStorage.getItem("pizza_correcta");
+// 	containerGenerador.innerHTML = `  <img src='${pizzaLocalStorage.imagen}' class='img'>
+//  <p class='parrafo'>${pizzaLocalStorage.nombre}</p>
+//  <p class='parrafo'>$${pizzaLocalStorage.precio}</p>
+//  <p class='parrafo'>${pizzaLocalStorage.ingredientes.join(', ')}</p>`
+// }
+// getPizzaLocalStorage();
+
 const getPizzaLocalStorage = () => {
 	const pizzaLocalStorage = localStorage.getItem("pizza_correcta");
-	containerGenerador.innerHTML = `  <img src='${pizzaLocalStorage.imagen}' class='img'>
+	console.log(pizzaLocalStorage);
+	/*containerGenerador.innerHTML = `  <img src='${pizzaLocalStorage.imagen}' class='img'>
  <p class='parrafo'>${pizzaLocalStorage.nombre}</p>
  <p class='parrafo'>$${pizzaLocalStorage.precio}</p>
  <p class='parrafo'>${pizzaLocalStorage.ingredientes.join(', ')}</p>`
+ */
 }
 getPizzaLocalStorage();
 
