@@ -53,9 +53,14 @@ const form = d.querySelector(".form");
 const errorMessage = d.querySelector(".form-error");
 const containerGenerador = d.querySelector(".container-generador");
 
-// const saveLocalStorage = () => {
-//   localStorage.setItem("pizza", JSON.stringify(pizzas)); 
-// };
+const getPizzaLocalStorage = () => {
+	const pizzaLocalStorage = localStorage.getItem("pizza_correcta");
+	containerGenerador.innerHTML = `  <img src='${pizzaLocalStorage.imagen}' class='img'>
+ <p class='parrafo'>${pizzaLocalStorage.nombre}</p>
+ <p class='parrafo'>$${pizzaLocalStorage.precio}</p>
+ <p class='parrafo'>${pizzaLocalStorage.ingredientes.join(', ')}</p>`
+}
+getPizzaLocalStorage();
 
 const saveLocalStorage = (idCorrecto) => {
   localStorage.setItem("pizza_correcta", JSON.stringify(idCorrecto)); 
@@ -67,7 +72,6 @@ const submitEvent = (e) => {
  const idCorrecto = pizzas.find(pizza => {
   return pizza.id === parseInt(inputNumber.value);
 })
-console.log(idCorrecto)
 
 if (idCorrecto) {
   containerGenerador.innerHTML = `  <img src='${idCorrecto.imagen}' class='img'>
@@ -82,7 +86,6 @@ if (idCorrecto) {
 }
 form.reset();
 }
-
 
 const init = () => {
   form.addEventListener("submit", submitEvent)
