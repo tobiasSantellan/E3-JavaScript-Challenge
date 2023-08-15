@@ -71,6 +71,7 @@ if (idCorrecto) {
  <p class='parrafo'>${idCorrecto.ingredientes.join(', ')}</p>` 
  errorMessage.textContent = ''
  saveLocalStorage(idCorrecto);
+ 
 } else {
   errorMessage.textContent = `No ingresaste un numero valido`
   containerGenerador.innerHTML = ''
