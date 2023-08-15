@@ -62,7 +62,7 @@ const getPizzaLocalStorage = () => {
  <p class='parrafo'>${pizzaLocalStorage.ingredientes.join(', ')}</p>`
  
 }
-getPizzaLocalStorage();
+getPizzaLocalStorage(); 
 
 const saveLocalStorage = (idCorrecto) => {
   localStorage.setItem("pizza_correcta", JSON.stringify(idCorrecto)); 
