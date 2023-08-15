@@ -53,8 +53,6 @@ const form = d.querySelector(".form");
 const errorMessage = d.querySelector(".form-error");
 const containerGenerador = d.querySelector(".container-generador");
 
-const pizzasID = JSON.parse(localStorage.getItem('pizza')) || [];
-
 const saveLocalStorage = () => {
   localStorage.setItem("pizza", JSON.stringify(pizzas)); 
 };
@@ -70,10 +68,11 @@ console.log(idCorrecto)
 
 if (idCorrecto) {
   containerGenerador.innerHTML = `  <img src='${idCorrecto.imagen}' class='img'>
-<p class='parrafo'>${idCorrecto.nombre}</p>
+ <p class='parrafo'>${idCorrecto.nombre}</p>
  <p class='parrafo'>$${idCorrecto.precio}</p>
  <p class='parrafo'>${idCorrecto.ingredientes.join(', ')}</p>` 
  errorMessage.textContent = ''
+ saveLocalStorage(idCorrecto);
 } else {
   errorMessage.textContent = `No ingresaste un numero valido`
   containerGenerador.innerHTML = ''
